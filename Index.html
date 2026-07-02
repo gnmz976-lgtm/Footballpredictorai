@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronostiqueur de Football</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f2f2f2;
+            margin:0;
+            padding:20px;
+        }
+
+        .container{
+            max-width:450px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+            text-align:center;
+        }
+
+        h1{
+            color:#28a745;
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+            font-size:16px;
+        }
+
+        button{
+            background:#28a745;
+            color:white;
+            border:none;
+            padding:12px 20px;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#218838;
+        }
+
+        #resultat{
+            margin-top:20px;
+            font-size:20px;
+            font-weight:bold;
+            color:#333;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚽ Pronostiqueur de Football</h1>
+
+<input type="text" id="equipe1" placeholder="Nom de l'équipe 1">
+
+<input type="text" id="equipe2" placeholder="Nom de l'équipe 2">
+
+<button onclick="pronostic()">
+Générer un pronostic
+</button>
+
+<div id="resultat"></div>
+
+</div>
+
+<script>
+
+function pronostic(){
+
+let equipe1=document.getElementById("equipe1").value;
+let equipe2=document.getElementById("equipe2").value;
+
+if(equipe1=="" || equipe2==""){
+document.getElementById("resultat").innerHTML="Veuillez saisir les deux équipes.";
+return;
+}
+
+let pronostics=[
+"Victoire de "+equipe1,
+"Victoire de "+equipe2,
+"Match nul",
+"Double chance : "+equipe1+" ou nul",
+"Double chance : "+equipe2+" ou nul",
+"Les deux équipes marquent",
+"Plus de 2,5 buts",
+"Moins de 2,5 buts"
+];
+
+let choix=Math.floor(Math.random()*pronostics.length);
+
+document.getElementById("resultat").innerHTML=pronostics[choix];
+
+}
+
+</script>
+
+</body>
+</html>
